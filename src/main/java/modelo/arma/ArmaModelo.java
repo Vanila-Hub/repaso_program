@@ -20,12 +20,15 @@ public class ArmaModelo {
 			prst.setInt(1, arma_id);
 			ResultSet rst = prst.executeQuery();
 			while(rst.next()) {
-				
+				arma.setCapacidad_danio(rst.getInt("capacidad_danio"));
+				arma.setFoto(rst.getString("foto"));
+				arma.setId_arma(rst.getInt("id"));
+				arma.setNombre(rst.getString("nombre"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return arma;
 	}
 	
 }

@@ -23,8 +23,8 @@ public class Escudo {
 	public int getCapacidad_defensa() {
 		return capacidad_defensa;
 	}
-	public void setCapacidad_defensa(int capacidad_defensa) {
-		this.capacidad_defensa = capacidad_defensa;
+	public void setCapacidad_defensa(int string) {
+		this.capacidad_defensa = string;
 	}
 	public Conector getCon() {
 		return con;

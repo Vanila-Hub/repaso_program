@@ -7,7 +7,7 @@ import modelo.conector.Conector;
 public class Arma {
 	private int id_arma;
 	private String nombre;
-	private String capacidad_danio;
+	private int capacidad_danio;
 	private String foto;
 	private Conector con;
 	
@@ -23,11 +23,11 @@ public class Arma {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getCapacidad_danio() {
+	public int getCapacidad_danio() {
 		return capacidad_danio;
 	}
-	public void setCapacidad_danio(String capacidad_danio) {
-		this.capacidad_danio = capacidad_danio;
+	public void setCapacidad_danio(int i) {
+		this.capacidad_danio = i;
 	}
 	public String getFoto() {
 		return foto;
