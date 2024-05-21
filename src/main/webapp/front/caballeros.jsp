@@ -22,7 +22,8 @@
 				<th scope="col">Fuerza</th>
 				<th scope="col">Experiencia</th>
 				<th scope="col">Foto</th>
-				<th scope="col">Arma id</th>
+				<th scope="col">Arma</th>
+				<th scope="col">Escudo</th>
 				<th scope="col">Opciones</th>
 			</tr>
 		</thead>
@@ -35,6 +36,7 @@
 					<td>${caballero.experiencia}</td>
 					<td>${caballero.foto}</td>
 					<td>${caballero.arma_id}</td>
+					<td>${caballero.escudo_id}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
