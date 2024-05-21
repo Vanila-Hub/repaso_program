@@ -11,7 +11,7 @@ import modelo.conector.Conector;
 public class EscudoModelo {
 
 	public Escudo getEscudoById(int escudo_id, Conector con) {
-		String sql = "SELECT * FROM ARMAS WHERE ID = ?";
+		String sql = "SELECT * FROM ESCUDOS WHERE ID = ?";
 		Escudo escudo = new Escudo();
 		escudo.setCon(con);
 		try {

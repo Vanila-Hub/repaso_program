@@ -34,6 +34,8 @@ public class CaballeroModelo {
 				caballero.setExperiencia(rst.getInt("experiencia"));
 				caballero.setId(rst.getInt("id"));
 				caballero.setNombre(rst.getString("nombre"));
+				//atributos relacionados
+				System.out.println(caballero);
 				caballero.setArma(modelo_Arma.getArmaBYID(caballero.getArma_id(),con));
 				caballero.setEscudo(modelo_escudo.getEscudoById(caballero.getEscudo_id(),con));
 				caballeros.add(caballero);
