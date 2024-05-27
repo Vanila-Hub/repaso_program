@@ -21,18 +21,30 @@
 		</c:when>
 	</c:choose>
 
-				<div class="container-fluid">
-					<form class="d-flex" role="search" method="get" action="/Caballeros/Getcaballero">
-						<input class="form-control me-2" type="search"
-							placeholder="Search" aria-label="Search" name="busqueda">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
-				</div>
+	<div class="container-fluid">
+		<form class="d-flex" role="search" method="get"
+			action="/Caballeros/Getcaballero">
+			<input class="form-control me-2" type="search" placeholder="Search"
+				aria-label="Search" name="busqueda">
+			<button class="btn btn-outline-success" type="submit">Search</button>
+		</form>
+	</div>
+	
+	<div class="d-grid gap-2">
+		<a class="btn btn-primary"
+			href="http://localhost:8080/Caballeros/AsignarPJ1">Luchar</a>
+		<div class="form-floating">
+		<form action="/Eliminarcaballeros" method="get">
+			<textarea class="form-control" placeholder="iDS A ELIMINAR"
+				id="floatingTextarea2" style="height: 100px" name="ids"></textarea>
+			<button class="btn btn-outline-success" type="submit">Eliminar</button>
+		</form>
+		</div>
+	</div>
 	<form action="/Caballeros/CrearCaballero" method="post">
 
 		<div class="mb-3">
-			<nav class="navbar bg-body-tertiary">
-			</nav>
+			<nav class="navbar bg-body-tertiary"></nav>
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Nombre</label> <input

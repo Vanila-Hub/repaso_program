@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.arma.Arma;
+import modelo.arma.ArmaModelo;
 import modelo.caballero.Caballero;
 import modelo.caballero.CaballeroModelo;
 import modelo.conector.Conector;
+import modelo.escudo.Escudo;
+import modelo.escudo.EscudoModelo;
 
 /**
  * Servlet implementation class Getcaballero
@@ -36,16 +40,29 @@ public class Getcaballero extends HttpServlet {
 		// TODO Auto-generated method stub
 		String searchRFequest = request.getParameter("busqueda");
 		CaballeroModelo modelo_cab = new CaballeroModelo();
+		CaballeroModelo modelo_caba = new CaballeroModelo();
+		ArmaModelo modelo_arma = new ArmaModelo();
+		EscudoModelo modelo_escudo = new EscudoModelo();
 		ArrayList<Caballero> caballeros = modelo_cab.getCaballeros();
+		ArrayList<Escudo> escudos = modelo_escudo.getEscudos();
+		ArrayList<Arma> armas = modelo_arma.getArmas();
+		
 		Iterator<Caballero> it_cab = caballeros.iterator();
 		
 		while(it_cab.hasNext()) {
 			Caballero cab = new Caballero();
 			cab = it_cab.next();
-			if (cab.getNombre().equalsIgnoreCase(searchRFequest)) {
-				System.out.println(cab.getNombre());
+			if (cab.getNombre().contains(searchRFequest)) {
+				
+			}else {
+				it_cab.remove();
 			}
 		}
+		request.setAttribute("caballeros", caballeros);
+		request.setAttribute("escudos", escudos);
+		request.setAttribute("armas", armas);
+		request.setAttribute("caballeros", caballeros);
+		request.getRequestDispatcher("front/caballeros.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package modelo.caballero;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -65,6 +66,44 @@ public class CaballeroModelo {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+	}
+
+	public Caballero getCaballeroById(int id_pj) {
+		String sql = "SELECT * FROM CABALLEROS WHERE ID = ?";
+		Conector con = new Conector();
+		Caballero caballero = new Caballero();
+
+		EscudoModelo modelo_escudo = new EscudoModelo();
+		ArmaModelo modelo_Arma = new ArmaModelo();
+		caballero.setCon(con);
+		try {
+			PreparedStatement prst = caballero.getCon().conectar().prepareStatement(sql);
+			prst.setInt(1, id_pj);
+			ResultSet rst = prst.executeQuery();
+			if (rst.next()) {
+				caballero = new Caballero();
+				caballero.setArma_id(rst.getInt("arma_id"));
+				caballero.setEscudo_id(rst.getInt("escudo_id"));
+				caballero.setFoto(rst.getString("foto"));
+				caballero.setFuerza(rst.getInt("fuerza"));
+				caballero.setExperiencia(rst.getInt("experiencia"));
+				caballero.setId(rst.getInt("id"));
+				caballero.setNombre(rst.getString("nombre"));
+				//atributos relacionados
+				caballero.setArma(modelo_Arma.getArmaBYID(caballero.getArma_id(),con));
+				caballero.setEscudo(modelo_escudo.getEscudoById(caballero.getEscudo_id(),con));
+			}
+			return caballero;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void insertGanador(int id_pj1, int id_pj2, int ganador, Date valueOf) {
+		String Sql = "INSERT INTO LUCHAS(FECHA,CABALLERO1_ID,CABALLERO2_ID,GANADOR_ID,FECHA) VALUES(?,?,?,?)";
 		
 	}
 
