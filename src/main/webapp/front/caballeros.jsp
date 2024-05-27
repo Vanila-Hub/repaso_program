@@ -21,6 +21,17 @@
 		</c:when>
 	</c:choose>
 
+	<div class="d-grid gap-2">
+		<a class="btn btn-primary"
+			href="http://localhost:8080/Caballeros/AsignarPJ1">Luchar</a>
+		<div class="form-floating">
+			<form action="/Caballeros/EliminarCaballeros" method="get">
+				<textarea class="form-control" placeholder="iDS A ELIMINAR"
+					id="floatingTextarea2" style="height: 100px" name="ids"></textarea>
+				<button class="btn btn-outline-success" type="submit">Eliminar</button>
+			</form>
+		</div>
+	</div>
 	<div class="container-fluid">
 		<form class="d-flex" role="search" method="get"
 			action="/Caballeros/Getcaballero">
@@ -28,18 +39,6 @@
 				aria-label="Search" name="busqueda">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
-	</div>
-	
-	<div class="d-grid gap-2">
-		<a class="btn btn-primary"
-			href="http://localhost:8080/Caballeros/AsignarPJ1">Luchar</a>
-		<div class="form-floating">
-		<form action="/Caballeros/EliminarCaballeros" method="get">
-			<textarea class="form-control" placeholder="iDS A ELIMINAR"
-				id="floatingTextarea2" style="height: 100px" name="ids"></textarea>
-			<button class="btn btn-outline-success" type="submit">Eliminar</button>
-		</form>
-		</div>
 	</div>
 	<form action="/Caballeros/CrearCaballero" method="post">
 

@@ -50,7 +50,8 @@ public class EliminarCaballeros extends HttpServlet {
 				model_cab.borrarCaballero(ides_elimi.get(i));
 			}
 		}
-		System.out.println(ides_elimi);
+		response.sendRedirect("/Caballeros/VerCaballeros");
+		
 		
 	}
 

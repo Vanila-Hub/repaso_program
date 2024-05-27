@@ -44,6 +44,7 @@ public class VerCaballeros extends HttpServlet {
 		ArrayList<Escudo> escudos = modelo_escudo.getEscudos();
 		ArrayList<Arma> armas = modelo_arma.getArmas();
 		ArrayList<Caballero> caballeros =  modelo_caba.getCaballeros();
+		caballeros.sort(new ComparadorNombre());
 		
 		request.setAttribute("caballeros", caballeros);
 		request.setAttribute("escudos", escudos);
