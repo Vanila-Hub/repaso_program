@@ -1,11 +1,16 @@
 package controlador.caballero;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import modelo.caballero.CaballeroModelo;
 
 /**
  * Servlet implementation class EliminarCaballeros
@@ -27,7 +32,26 @@ public class EliminarCaballeros extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String caballerosIDSForm = request.getParameter("ids");
+		caballerosIDSForm = caballerosIDSForm.replaceAll(",", ":");
+		String[] ides = caballerosIDSForm.split(":");
+		Boolean ids_existen = false;
+		ArrayList<Integer> ides_elimi = new ArrayList<Integer>();
+		CaballeroModelo model_cab = new CaballeroModelo();
+		
+		for (int i = 0; i < ides.length; i++) {
+			ides_elimi.add(Integer.parseInt(ides[i]));
+		}
+		
+		if (ids_existen = model_cab.existeCaballeros(ides_elimi)) {
+			
+		} else {
+			for (int i = 0; i < ides_elimi.size(); i++) {
+				model_cab.borrarCaballero(ides_elimi.get(i));
+			}
+		}
+		System.out.println(ides_elimi);
+		
 	}
 
 	/**

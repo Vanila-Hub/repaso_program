@@ -34,7 +34,7 @@
 		<a class="btn btn-primary"
 			href="http://localhost:8080/Caballeros/AsignarPJ1">Luchar</a>
 		<div class="form-floating">
-		<form action="/Eliminarcaballeros" method="get">
+		<form action="/Caballeros/EliminarCaballeros" method="get">
 			<textarea class="form-control" placeholder="iDS A ELIMINAR"
 				id="floatingTextarea2" style="height: 100px" name="ids"></textarea>
 			<button class="btn btn-outline-success" type="submit">Eliminar</button>

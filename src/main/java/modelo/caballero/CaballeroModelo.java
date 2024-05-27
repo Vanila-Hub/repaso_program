@@ -107,6 +107,52 @@ public class CaballeroModelo {
 		
 	}
 
+	public Boolean existeCaballeros(ArrayList<Integer> ides_elimi) {
+		String sql = "SELECT ID FROM CABALLEROS";
+		Caballero cab = new Caballero();
+		ArrayList<Caballero> caballeros_ids = new ArrayList<Caballero>();
+		cab.setCon(new Conector());
+		try {
+			PreparedStatement prst= cab.getCon().conectar().prepareStatement(sql);
+			ResultSet rst = prst.executeQuery();
+			while(rst.next()) {
+				cab = new Caballero();
+				cab.setId(rst.getInt("ID"));
+				caballeros_ids.add(cab);
+			}
+			
+			for (int i = 0; i < ides_elimi.size
+					(); i++) {
+				if (ides_elimi.get(i).equals(caballeros_ids.get(i))) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			cab.getCon().CERRAR();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void borrarCaballero(Integer id_cab) {
+		String sql = "DELETE FROM CABALLEROS WHERE ID = ?";
+		Caballero cab = new Caballero();
+		cab.setCon(new Conector());
+		try {
+			PreparedStatement prst = cab.getCon().conectar().prepareStatement(sql);
+			prst.setInt(1, id_cab);
+			prst.executeUpdate();
+			cab.getCon().CERRAR();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
+
 //	public boolean getCaballeroNombreById(Caballero caballero) {
 //		String sql = "SELECT * FROM CABALLEROS WHERE NOMBRE = '?'";
 //		Conector con = new Conector();
