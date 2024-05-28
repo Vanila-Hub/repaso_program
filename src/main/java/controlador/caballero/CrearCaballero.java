@@ -45,7 +45,6 @@ public class CrearCaballero extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Caballero caballero = new Caballero();
-		String msg = null;
 		CaballeroModelo modelo_caballero = new CaballeroModelo();
 		FormValidador valitator = new FormValidador();
 		

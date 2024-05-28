@@ -1,6 +1,5 @@
 package modelo.caballero;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -102,10 +101,10 @@ public class CaballeroModelo {
 		return null;
 	}
 
-	public void insertGanador(int id_pj1, int id_pj2, int ganador, Date valueOf) {
-		String Sql = "INSERT INTO LUCHAS(FECHA,CABALLERO1_ID,CABALLERO2_ID,GANADOR_ID,FECHA) VALUES(?,?,?,?)";
-		
-	}
+//	public void insertGanador(int id_pj1, int id_pj2, int ganador, Date valueOf) {
+//		String Sql = "INSERT INTO LUCHAS(FECHA,CABALLERO1_ID,CABALLERO2_ID,GANADOR_ID,FECHA) VALUES(?,?,?,?)";
+//		
+//	}
 
 	public Boolean existeCaballeros(ArrayList<Integer> ides_elimi) {
 		String sql = "SELECT ID FROM CABALLEROS";
@@ -145,6 +144,26 @@ public class CaballeroModelo {
 			prst.setInt(1, id_cab);
 			prst.executeUpdate();
 			cab.getCon().CERRAR();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void editarCaballero(Caballero caballero) {
+		String sql = "UPDATE caballeros SET nombre = ?, fuerza = ?, experiencia = ?, foto = ?, arma_id = ?, escudo_id = ? WHERE caballeros.id = ?";
+		Conector con = new Conector();
+		caballero.setCon(con);
+		try {
+			PreparedStatement prst = caballero.getCon().conectar().prepareStatement(sql);
+			prst.setString(1, caballero.getNombre());
+			prst.setInt(2, caballero.getFuerza());
+			prst.setInt(3, caballero.getExperiencia());
+			prst.setString(4, caballero.getFoto());
+			prst.setInt(5, caballero.getArma_id());
+			prst.setInt(6, caballero.getEscudo_id());
+			prst.setInt(7, caballero.getId());
+			prst.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

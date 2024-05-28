@@ -20,104 +20,53 @@
 				campos sin relllenar o el nombre esta repetido</div>
 		</c:when>
 	</c:choose>
-
-	<div class="d-grid gap-2">
-		<a class="btn btn-primary"
-			href="http://localhost:8080/Caballeros/AsignarPJ1">Luchar</a>
-		<div class="form-floating">
-			<form action="/Caballeros/EliminarCaballeros" method="get">
-				<textarea class="form-control" placeholder="iDS A ELIMINAR"
-					id="floatingTextarea2" style="height: 100px" name="ids"></textarea>
-				<button class="btn btn-outline-success" type="submit">Eliminar</button>
-			</form>
-		</div>
-	</div>
-	<div class="container-fluid">
-		<form class="d-flex" role="search" method="get"
-			action="/Caballeros/Getcaballero">
-			<input class="form-control me-2" type="search" placeholder="Search"
-				aria-label="Search" name="busqueda">
-			<button class="btn btn-outline-success" type="submit">Search</button>
-		</form>
-	</div>
-	<form action="/Caballeros/CrearCaballero" method="post">
-
+<form action="/Caballeros/Edit_caballero" method="post">
+		<input value="${caballero.id}" name="id_caballero" class="d-none">
 		<div class="mb-3">
 			<nav class="navbar bg-body-tertiary"></nav>
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Nombre</label> <input
-				type="text" class="form-control" id="exampleInputEmail1"
-				aria-describedby="emailHelp" name="nombre">
+				type="text" class="form-control" placeholder="${caballero.nombre}" id="exampleInputEmail1"
+				aria-describedby="emailHelp" name="nombre" value="${caballero.nombre}">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Fuerza</label>
-			<input type="text" class="form-control" id="exampleInputPassword1"
+			<input type="text" class="form-control" value="${caballero.fuerza}" id="exampleInputPassword1"
 				name="fuerza">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Experiencia</label>
-			<input type="text" class="form-control" id="exampleInputPassword1"
+			<input type="text" class="form-control" value="${caballero.experiencia}" id="exampleInputPassword1"
 				name="experiencia">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Foto</label> <input
-				type="text" class="form-control" id="exampleInputPassword1"
+				type="text" class="form-control" value="${caballero.foto}" id="exampleInputPassword1"
 				name="foto">
 		</div>
 		<div class="mb-3">
 			<select class="form-select" aria-label="Default select example"
 				name="arma">
-				<option selected>Armas</option>
 				<c:forEach items="${armas}" var="arma">
 					<option value="${arma.id_arma}">${arma.nombre}</option>
 				</c:forEach>
+				<option value="${caballero.getArma().id_arma}" selected>${caballero.getArma().nombre}</option>
 			</select>
 		</div>
 
 		<div class="mb-3">
 			<select class="form-select" aria-label="Default select example"
 				name="escudo">
-				<option selected>Escudos</option>
 				<c:forEach items="${escudos}" var="escudo">
 					<option value="${escudo.id_escudo}">${escudo.nombre}</option>
 				</c:forEach>
+				<option value="${caballero.getEscudo().id_escudo}" selected>${caballero.getEscudo().nombre}</option>
 			</select>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">Id</th>
-				<th scope="col">Nombre</th>
-				<th scope="col">Fuerza</th>
-				<th scope="col">Experiencia</th>
-				<th scope="col">Foto</th>
-				<th scope="col">Arma</th>
-				<th scope="col">Escudo</th>
-				<th scope="col">Opciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${caballeros}" var="caballero">
-				<tr>
-					<th scope="row">${caballero.id}</th>
-					<td>${caballero.nombre}</td>
-					<td>${caballero.fuerza}</td>
-					<td>${caballero.experiencia}</td>
-					<td>${caballero.foto}</td>
-					<td>${caballero.getArma().nombre}</td>
-					<td>${caballero.getEscudo().nombre}</td>
-					<td><div class="btn-group" role="group"
-							aria-label="Basic example">
-							<a class="bi bi-pencil-square btn btn-primary" href="/Caballeros/Edit_caballero?id_caballero=${caballero.id}"></a>
-						</div></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -18,6 +18,7 @@ public class Caballero {
 	private int escudo_id;
 	private int experiencia;
 	private Escudo escudo;
+
 	private Arma arma;
 	
 	public Escudo getEscudo() {
